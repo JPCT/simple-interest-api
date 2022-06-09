@@ -22,7 +22,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @CrossOrigin(origins = "*", maxAge = 86400)
 @RestController
 @RequestMapping("/api/interest")
-@Tag(name = "Simple interest controller", description = "Simple interest controlle")
+@Tag(name = "Simple interest controller", description = "Simple interest controller")
 public class SimpleInterestController {
 
     private final SimpleInterestService simpleInterestService;
@@ -41,7 +41,7 @@ public class SimpleInterestController {
             @ApiResponse(code = 500, message = "Internal error")
     })
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<SimpleInterestResponse>> createUser(@Valid @RequestBody SimpleInterestRequest simpleInterestRequest){
+    public ResponseEntity<List<SimpleInterestResponse>> calculate(@Valid @RequestBody SimpleInterestRequest simpleInterestRequest){
         Set<ConstraintViolation<SimpleInterestRequest>> violationSet = validator.validate(simpleInterestRequest);
         if (!violationSet.isEmpty()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

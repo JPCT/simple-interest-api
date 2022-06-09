@@ -2,7 +2,7 @@ package com.jpct.simpleinterestapi.domain.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -103,5 +103,18 @@ public class SimpleInterestInput {
         public SimpleInterestInput build() {
             return new SimpleInterestInput(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SimpleInterestInput that = (SimpleInterestInput) o;
+        return Objects.equals(id, that.id) && Objects.equals(amount, that.amount) && Objects.equals(terms, that.terms) && Objects.equals(rate, that.rate) && Objects.equals(createdAt, that.createdAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, amount, terms, rate, createdAt);
     }
 }
