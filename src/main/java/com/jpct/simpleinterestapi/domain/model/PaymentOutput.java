@@ -25,12 +25,16 @@ public class PaymentOutput {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private SimpleInterestInput simpleInterestInput;
+
     private PaymentOutput(Builder builder) {
         id = builder.id;
         paymentNumber = builder.paymentNumber;
         amount = builder.amount;
         paymentDate = builder.paymentDate;
         createdAt = builder.createdAt;
+        simpleInterestInput = builder.simpleInterestInput;
     }
 
     public static Builder newBuilder() {
@@ -65,6 +69,9 @@ public class PaymentOutput {
         return createdAt;
     }
 
+    public SimpleInterestInput getSimpleInterestInput() {
+        return simpleInterestInput;
+    }
 
     public static final class Builder {
         private Long id;
@@ -72,6 +79,7 @@ public class PaymentOutput {
         private Double amount;
         private LocalDate paymentDate;
         private LocalDateTime createdAt;
+        private SimpleInterestInput simpleInterestInput;
 
         private Builder() {
         }
@@ -98,6 +106,11 @@ public class PaymentOutput {
 
         public Builder createdAt(LocalDateTime val) {
             createdAt = val;
+            return this;
+        }
+
+        public Builder simpleInterestInput(SimpleInterestInput val) {
+            simpleInterestInput = val;
             return this;
         }
 

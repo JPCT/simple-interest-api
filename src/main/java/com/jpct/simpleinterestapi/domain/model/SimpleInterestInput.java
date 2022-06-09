@@ -2,6 +2,7 @@ package com.jpct.simpleinterestapi.domain.model;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table
@@ -63,7 +64,6 @@ public class SimpleInterestInput {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-
 
     public static final class Builder {
         private Long id;
